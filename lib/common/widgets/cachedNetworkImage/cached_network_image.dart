@@ -6,19 +6,20 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 class CachedNetworkImageWidget extends StatelessWidget {
   const CachedNetworkImageWidget(
-      {super.key, this.url, this.boxFit, this.height, this.width});
+      {super.key, this.url, this.boxFit, this.height, this.width, this.zoom});
 
   final String? url;
   final BoxFit? boxFit;
   final double? height;
   final double? width;
+  final double? zoom;
 
   @override
   Widget build(BuildContext context) {
     final screenSize = context.screenSize;
     final theme = context.theme;
     return Transform.scale(
-      scale: 1,
+      scale: zoom ?? 1,
       child: CachedNetworkImage(
         height: height,
         width: width,

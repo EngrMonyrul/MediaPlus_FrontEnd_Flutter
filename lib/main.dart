@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mediaplusbackend/mediaplusbackend.dart';
 import 'package:mediaplusfrontend/utils/routes/routes_manage.dart';
 import 'package:mediaplusfrontend/utils/theme/base_theme_config.dart';
 import 'package:mediaplusfrontend/views/homeScreen/screens/home_screen.dart';
+import 'package:mediaplusfrontend/views/playerPage/providers/player_page_provider.dart';
 import 'package:mediaplusfrontend/views/trendingPage/pages/treding_page.dart';
 import 'package:mediaplusfrontend/views/trendingPage/providers/trending_page_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown
+  ]);
   await initPackages(
     baseUrl: "https://www.googleapis.com/youtube/v3/",
     apiKey: "AIzaSyB8gEtJif75ZNNm7hlH--JgBd6YFRSDw_k",
@@ -19,6 +25,9 @@ void main() async {
       provider: [
         ChangeNotifierProvider<TrendingPageProvider>(
           create: (_) => TrendingPageProviderImpl(),
+        ),
+        ChangeNotifierProvider<PlayerPageProvider>(
+          create: (_) => PlayerPageProviderImpl(),
         ),
       ],
       lightTheme: BaseThemeConfig.lightThemeData,

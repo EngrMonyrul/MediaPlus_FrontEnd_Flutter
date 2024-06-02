@@ -29,7 +29,6 @@ class _TrendingPageState extends State<TrendingPage> {
   void fetchTrendingVideos({String? nextPageToken}) async {
     final horizontalOffset =
         context.read<TrendingPageProvider>().regionControllerOffset;
-    print(horizontalOffset);
     final trendingMediaProvider = context.read<TrendingMediaProvider>();
     if (nextPageToken == null) {
       trendingMediaProvider.setLoading(value: true);
@@ -227,7 +226,7 @@ class _TrendingPageState extends State<TrendingPage> {
                                         onTap: () {
                                           Navigator.pushNamed(
                                               context, RoutesName.viewPage,
-                                              arguments: index);
+                                              arguments: trendingItem);
                                         },
                                         child: Stack(
                                           children: [

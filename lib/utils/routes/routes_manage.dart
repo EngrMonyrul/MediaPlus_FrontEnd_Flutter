@@ -1,13 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mediaplusbackend/mediaplusbackend.dart';
 import 'package:mediaplusfrontend/common/widgets/errorWidgetScreen/error_widget_screen.dart';
 import 'package:mediaplusfrontend/utils/routes/routes_name.dart';
 import 'package:mediaplusfrontend/views/homeScreen/screens/home_screen.dart';
+import 'package:mediaplusfrontend/views/playerPage/pages/player_page.dart';
+import 'package:mediaplusfrontend/views/searchPage/screens/search_page.dart';
 import 'package:mediaplusfrontend/views/viewPage/pages/view_page.dart';
 
 Map<String, WidgetBuilder> routes({Object? args}) => {
       RoutesName.homePage: (context) => const HomeScreen(),
-      RoutesName.viewPage: (context) => ViewPage(index: args as int),
+      RoutesName.viewPage: (context) => ViewPage(item: args as Item),
+      RoutesName.playerPage: (context) => PlayerPage(item: args as Item),
+      RoutesName.searchPage: (context) => const SearchPage(),
     };
 
 Route onGenerateRoutes(RouteSettings routeSettings) {
